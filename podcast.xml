@@ -15,6 +15,16 @@
     <itunes:image href="https://kohlenberg.github.io/chengyudaily/cover-3000.png"/>
     <itunes:category text="Education"/>
 <item>
+      <title>画龙点睛 (huà lóng diǎn jīng)</title>
+      <description><![CDATA[To add the finishing touch; to bring something to life.]]></description>
+      <link>https://kohlenberg.github.io/chengyudaily/2025-08-20-画龙点睛.html</link>
+      <guid isPermaLink="false">cda27a10692d1557a20054699e5cf044c1fa46e7</guid>
+      <pubDate>Wed, 20 Aug 2025 10:00:00 +0000</pubDate>
+      <enclosure url="https://github.com/kohlenberg/chengyudaily/releases/download/v20250820-%E7%94%BB%E9%BE%99%E7%82%B9%E7%9D%9B/2025-08-20-.mp3" length="1471488" type="audio/mpeg"/>
+      <itunes:image href="https://kohlenberg.github.io/chengyudaily/episodes/2025-08-20-画龙点睛/cover.png"/>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+<item>
       <title>画蛇添足 (huà shé tiān zú)</title>
       <description><![CDATA[to add unnecessary details; to overdo something]]></description>
       <link>https://kohlenberg.github.io/chengyudaily/2025-08-20-画蛇添足.html</link>
