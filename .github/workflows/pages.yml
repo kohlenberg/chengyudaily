@@ -18,14 +18,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
-      # (optional) Build RSS from posts BEFORE Jekyll, so we don't need a second commit
+      # build podcast.xml WITHOUT committing
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
       - run: pip install pyyaml requests
-      - run: python build_feed.py  # assumes this file is in repo root
-
+      - run: python build_feed.py
       - uses: actions/configure-pages@v4
       - uses: actions/jekyll-build-pages@v1
         with:
