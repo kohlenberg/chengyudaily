@@ -8,10 +8,8 @@ layout: default
     <p class="muted" style="margin-top:0">{{ page.date | date: "%B %d, %Y" }}</p>
 
     {% if page.cover_image %}
-      <img
-        src="{{ page.cover_image | relative_url }}"
-        alt="{{ page.title }}"
-        style="border-radius:12px; margin:1rem 0;">
+      <img src="{{ page.cover_image | relative_url }}" alt="{{ page.title }}"
+           style="border-radius:12px; margin:1rem 0;">
     {% endif %}
 
     {% if page.description %}
@@ -20,15 +18,10 @@ layout: default
   </header>
 
   {% if page.audio_url %}
-    <audio
-      controls
-      preload="metadata"
-      playsinline
-      style="margin:1rem 0">
+    <audio controls preload="metadata" playsinline style="margin:1rem 0">
       <source src="{{ page.audio_url | relative_url }}" type="audio/mpeg">
-      Your browser does not support the audio element.
     </audio>
-    <p><a href="{{ page.audio_url | relative_url }}" download>Download MP3</a></p>
+    <p><a href="{{ page.audio_url | absolute_url }}" download>Download MP3</a></p>
   {% endif %}
 
   <div class="post-content">
