@@ -21,7 +21,7 @@ permalink: /
       <audio controls preload="metadata" playsinline style="width:100%;max-width:520px; margin:.25rem 0;">
         <source src="{{ post.audio_url | relative_url }}" type="audio/mpeg">
       </audio>
-      <div><a href="{{ post.audio_url | relative_url }}" download>Download MP3</a></div>
+      <div><a href="{{ post.audio_url | absolute_url }}" download>Download MP3</a></div>
     {% endif %}
   </li>
 {% endfor %}
