@@ -4,48 +4,6 @@ title: "Chengyu Bites"
 permalink: /
 ---
 
-<style>
-/* --- Episode list layout with named areas (inline for reliability) --- */
-.episode-list { list-style: none; padding-left: 0; margin: 0; }
-
-.episode-card {
-  display: grid;
-  grid-template-columns: 200px 1fr;
-  grid-template-rows: auto auto;
-  grid-template-areas:
-    "cover head"
-    "cover audio";
-  gap: 0.75rem 1rem;
-  align-items: start;
-  margin: 1.25rem 0 2rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid rgba(127,127,127,.2);
-}
-
-.episode-cover  { grid-area: cover; width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 10px; }
-.episode-head   { grid-area: head; }
-.episode-title  { display:block; font-size: 1.05rem; margin: 0 0 .15rem; }
-.episode-title a{ text-decoration: none; }
-.episode-desc   { margin-top: .1rem; color: #666; }
-
-.episode-audio  { grid-area: audio; }
-.episode-audio audio { width: 100%; max-width: 560px; }
-.episode-download { display:inline-block; margin-top:.4rem; font-size:.95rem; }
-
-/* Responsive: stack on small screens */
-@media (max-width: 560px) {
-  .episode-card {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto auto;
-    grid-template-areas:
-      "cover"
-      "head"
-      "audio";
-  }
-  .episode-cover { max-width: 260px; }
-}
-</style>
-
 <h2>Episodes</h2>
 
 <ul class="episode-list">
@@ -56,9 +14,7 @@ permalink: /
     {% endif %}
 
     <div class="episode-head">
-      <strong class="episode-title">
-        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-      </strong>
+      <strong class="episode-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></strong>
       {% if post.description %}
         <div class="episode-desc">{{ post.description }}</div>
       {% endif %}
