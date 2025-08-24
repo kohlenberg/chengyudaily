@@ -4,9 +4,8 @@
     <meta charset="utf-8">
     <title>{% if page.title %}{{ page.title }} · {% endif %}{{ site.title | default: "Chengyu Bites" }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    {%- comment -%} Canonical + OpenGraph (handles baseurl) {%- endcomment -%}
     <link rel="canonical" href="{{ page.url | absolute_url }}">
+
     {% assign og_image = page.cover_image | default: site.cover_image %}
     {% if og_image %}
       <meta property="og:image" content="{{ og_image | absolute_url }}">
@@ -20,37 +19,24 @@
       <meta property="og:description" content="{{ page.description | default: site.description }}">
     {% endif %}
 
-    {%- comment -%} Minimal styling (optional) {%- endcomment -%}
-    <style>
-      :root { color-scheme: light dark; }
-      body { margin:0; font: 16px/1.6 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif; }
-      header, main, footer { max-width: 860px; margin: 0 auto; padding: 1rem; }
-      a { color: inherit; }
-      .site-title { font-weight: 700; font-size: 1.25rem; text-decoration: none; }
-      .muted { color: #666; }
-      hr { border: none; border-top: 1px solid rgba(127,127,127,.2); margin: 1.5rem 0; }
-      img { max-width: 100%; height: auto; }
-      audio { width: 100%; }
-    </style>
-
-    {%- comment -%} If you have a CSS file, use this instead of inline style:
-    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
-    {%- endcomment -%}
+    <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
   </head>
   <body>
-    <header>
+    <header class="site-header">
       <a class="site-title" href="{{ '/' | relative_url }}">{{ site.title | default: "Chengyu Bites" }}</a>
+      <nav class="site-nav">
+        <a href="{{ '/podcast.xml' | relative_url }}">Podcast RSS</a>
+      </nav>
     </header>
 
-    <main>
+    <main class="site-main">
       {{ content }}
     </main>
 
-    <footer>
+    <footer class="site-footer">
       <hr>
       <div class="muted">
-        © {{ site.time | date: '%Y' }} {{ site.author | default: 'Chengyu Bites' }} ·
-        <a href="{{ '/podcast.xml' | relative_url }}">Podcast RSS</a>
+        © {{ site.time | date: '%Y' }} {{ site.author | default: 'Chengyu Bites' }}
       </div>
     </footer>
   </body>
