@@ -1,27 +1,27 @@
-name: Deploy Jekyll site to Pages
 on:
   push:
     branches: [ main ]
+    paths:
+      - "_posts/**"
+      - "episodes/**"
+      - "_layouts/**"
+      - "_includes/**"
+      - "assets/**"
+      - "index.html"
+      - "build_feed.py"
+      - "_config.yml"
+      - ".github/workflows/pages.yml"
   workflow_dispatch:
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: true
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      # build podcast.xml WITHOUT committing
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+          cache: "pip"
       - run: pip install pyyaml requests
       - run: python build_feed.py
       - uses: actions/configure-pages@v4
