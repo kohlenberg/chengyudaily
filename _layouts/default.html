@@ -19,32 +19,8 @@
       <meta property="og:description" content="{{ page.description | default: site.description }}">
     {% endif %}
 
-    <style>
-      :root { color-scheme: dark; }
-
-      /* Page base */
-      html, body { height: 100%; }
-      body {
-        margin: 0;
-        font: 16px/1.6 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
-        background: #0d1117;             /* dark bg */
-        color: #e6edf3;                  /* force light text */
-      }
-      /* Ensure all common text elements are readable */
-      h1,h2,h3,h4,h5,h6,p,li,small,em,strong,div,span { color: #e6edf3; }
-      a { color: #8ab4f8; text-decoration: none; }
-      a:hover { text-decoration: underline; }
-
-      header.site-header, main.site-main, footer.site-footer {
-        max-width: 960px; margin: 0 auto; padding: 1rem;
-      }
-      .site-title { font-weight: 700; font-size: 1.25rem; }
-      .site-nav a { margin-left: 1rem; }
-      .muted { color: #9aa4b2; }
-      hr { border: none; border-top: 1px solid rgba(255,255,255,.08); margin: 1.5rem 0; }
-      img { max-width: 100%; height: auto; display: block; }
-      audio { width: 100%; background: #0b1220; border-radius: 8px; }
-    </style>
+    <!-- One stylesheet for everything -->
+    <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
   </head>
   <body>
     <header class="site-header">
@@ -55,15 +31,12 @@
     </header>
 
     <main class="site-main">
-      <!-- CONTENT RENDERS HERE -->
       {{ content }}
     </main>
 
     <footer class="site-footer">
       <hr>
-      <div class="muted">
-        © {{ site.time | date: '%Y' }} {{ site.author | default: 'Chengyu Bites' }}
-      </div>
+      <div class="muted">© {{ site.time | date: '%Y' }} {{ site.author | default: 'Chengyu Bites' }}</div>
     </footer>
   </body>
 </html>
