@@ -1,5 +1,11 @@
+---
+layout: default
+title: "Chengyu Bites"
+permalink: /
+---
+
 <style>
-/* --- Episode list layout with named areas --- */
+/* --- Episode list layout with named areas (inline for reliability) --- */
 .episode-list { list-style: none; padding-left: 0; margin: 0; }
 
 .episode-card {
@@ -9,7 +15,7 @@
   grid-template-areas:
     "cover head"
     "cover audio";
-  gap: 0.75rem 1rem;       /* row / column gap */
+  gap: 0.75rem 1rem;
   align-items: start;
   margin: 1.25rem 0 2rem;
   padding-bottom: 1rem;
@@ -18,14 +24,15 @@
 
 .episode-cover  { grid-area: cover; width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 10px; }
 .episode-head   { grid-area: head; }
-.episode-audio  { grid-area: audio; }
 .episode-title  { display:block; font-size: 1.05rem; margin: 0 0 .15rem; }
 .episode-title a{ text-decoration: none; }
-.episode-desc   { margin-top: .1rem; }
+.episode-desc   { margin-top: .1rem; color: #666; }
+
+.episode-audio  { grid-area: audio; }
 .episode-audio audio { width: 100%; max-width: 560px; }
 .episode-download { display:inline-block; margin-top:.4rem; font-size:.95rem; }
 
-/* Responsive: stack cleanly on small screens */
+/* Responsive: stack on small screens */
 @media (max-width: 560px) {
   .episode-card {
     grid-template-columns: 1fr;
@@ -38,3 +45,33 @@
   .episode-cover { max-width: 260px; }
 }
 </style>
+
+<h2>Episodes</h2>
+
+<ul class="episode-list">
+{% for post in site.posts %}
+  <li class="episode-card">
+    {% if post.cover_image %}
+      <img class="episode-cover" src="{{ post.cover_image | relative_url }}" alt="{{ post.title }}">
+    {% endif %}
+
+    <div class="episode-head">
+      <strong class="episode-title">
+        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+      </strong>
+      {% if post.description %}
+        <div class="episode-desc">{{ post.description }}</div>
+      {% endif %}
+    </div>
+
+    {% if post.audio_url %}
+      <div class="episode-audio">
+        <audio controls preload="metadata" playsinline>
+          <source src="{{ post.audio_url | relative_url }}" type="audio/mpeg">
+        </audio>
+        <a class="episode-download" href="{{ post.audio_url | absolute_url }}" download>Download MP3</a>
+      </div>
+    {% endif %}
+  </li>
+{% endfor %}
+</ul>
