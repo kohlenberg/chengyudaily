@@ -83,3 +83,46 @@ hr { border: none; border-top: 1px solid var(--hr); margin: 1.5rem 0; }
   }
   .episode-cover { max-width: 260px; }
 }
+
+/* --- Post content polish --- */
+.post-content { margin-top: 1rem; }
+.post-content h2 { margin-top: 1.25rem; margin-bottom: .5rem; }
+
+/* Characters table */
+.post-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: .5rem 0 1rem;
+  background: rgba(255,255,255,.02);
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.post-content table th,
+.post-content table td {
+  padding: .6rem .7rem;
+  border-bottom: 1px solid var(--card-border);
+}
+.post-content table th {
+  text-align: left;
+  font-weight: 700;
+}
+.post-content table tr:last-child td {
+  border-bottom: none;
+}
+
+/* Examples list */
+.post-content ul { padding-left: 1.2rem; }
+.post-content li { margin: .5rem 0; }
+.post-content li br { content: ""; }
+
+/* Optional: “phrase card” emphasis */
+.phrase-card {
+  display: inline-block;
+  padding: .4rem .6rem;
+  border-radius: 8px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid var(--card-border);
+  margin: .25rem 0 .75rem;
+}
+
