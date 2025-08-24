@@ -4,12 +4,11 @@ layout: default
 
 <article class="post">
   <header>
-    <h1 style="margin-bottom:.25rem">{{ page.title }}</h1>
-    <p class="muted" style="margin-top:0">{{ page.date | date: "%B %d, %Y" }}</p>
+    <h1 class="post-title">{{ page.title }}</h1>
+    <p class="muted">{{ page.date | date: "%B %d, %Y" }}</p>
 
     {% if page.cover_image %}
-      <img src="{{ page.cover_image | relative_url }}" alt="{{ page.title }}"
-           style="border-radius:12px; margin:1rem 0;">
+      <img class="post-cover" src="{{ page.cover_image | relative_url }}" alt="{{ page.title }}">
     {% endif %}
 
     {% if page.description %}
@@ -18,10 +17,7 @@ layout: default
   </header>
 
   {% if page.audio_url %}
-    <audio controls preload="metadata" playsinline style="margin:1rem 0">
-      <source src="{{ page.audio_url | relative_url }}" type="audio/mpeg">
-    </audio>
-    <p><a href="{{ page.audio_url | absolute_url }}" download>Download MP3</a></p>
+    {% include audio.html src=page.audio_url download=true %}
   {% endif %}
 
   <div class="post-content">
