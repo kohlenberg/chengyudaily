@@ -126,27 +126,45 @@ hr { border: none; border-top: 1px solid var(--hr); margin: 1.5rem 0; }
   margin: .25rem 0 .75rem;
 }
 
-/* --- Header brand with small logo --- */
-.site-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+/* --- Header brand with small logo (robust on desktop) --- */
+.site-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:1rem;
+  flex-wrap:nowrap;            /* don’t wrap on desktop */
 }
 
-.brand {
-  display: inline-flex;
-  align-items: center;
-  gap: .6rem;
-  text-decoration: none;
-  color: inherit;
+.brand{
+  display:flex;                /* ensure logo + text stay on one line */
+  align-items:center;
+  gap:.6rem;
+  text-decoration:none;
+  color:inherit;
+  min-width:0;                 /* allow text to shrink if needed (Safari fix) */
 }
 
-.site-logo {
-  width: 40px;
-  height: 40px;
-  border-radius: 8px;
-  object-fit: cover;
-  box-shadow: 0 1px 2px rgba(0,0,0,.35);
+.site-logo{
+  width:40px;
+  height:40px;
+  flex:0 0 40px;               /* fixed size; never grows */
+  border-radius:8px;
+  object-fit:cover;
+  display:block;               /* prevents baseline quirks */
+  box-shadow:0 1px 2px rgba(0,0,0,.35);
 }
 
-.brand:hover .site-title { text-decoration: underline; }
+.site-title{
+  font-weight:700;
+  font-size:1.25rem;
+  line-height:1.1;
+  white-space:nowrap;          /* keep on one line on wide screens */
+  overflow:hidden;             /* in case the title is long */
+  text-overflow:ellipsis;
+}
+
+/* Keep mobile feeling nice (allow wrapping if space is tight) */
+@media (max-width: 520px){
+  .site-header{ gap:.75rem; }
+  .site-title{ white-space:normal; }
+}
