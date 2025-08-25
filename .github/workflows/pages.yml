@@ -2,8 +2,8 @@ name: Build & Deploy (Pages + RSS)
 
 on:
   push:
-    branches: [ main ]         # run on every push to main
-  workflow_dispatch:            # allow manual runs
+    branches: [ main ]
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -24,11 +24,10 @@ jobs:
         with:
           python-version: "3.11"
           cache: "pip"
+          cache-dependency-path: "requirements.txt"
 
-      - name: Install deps for feed build
-        run: |
-          python -m pip install --upgrade pip
-          pip install pyyaml requests
+      - name: Install feed deps
+        run: pip install -r requirements.txt
 
       - name: Build podcast feed
         run: |
@@ -37,17 +36,12 @@ jobs:
           ls -l podcast.xml || true
           test -s podcast.xml || (echo "ERROR: podcast.xml not created"; exit 1)
 
-      - name: Configure Pages
-        uses: actions/configure-pages@v4
-
-      - name: Build with Jekyll
-        uses: actions/jekyll-build-pages@v1
+      - uses: actions/configure-pages@v4
+      - uses: actions/jekyll-build-pages@v1
         with:
           source: ./
           destination: ./_site
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v3
         with:
           path: ./_site
 
