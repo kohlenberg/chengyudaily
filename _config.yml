@@ -2,6 +2,9 @@ title: "Chengyu Bites"
 description: "Short, conversational episodes exploring Chinese 成语."
 url: "https://kohlenberg.github.io"
 baseurl: "/chengyudaily"
+cover_image: "/assets/img/podcast-logo.png"
+logo: "/assets/img/podcast-logo.png"
+
 
 # Build settings (GitHub Pages-compatible)
 markdown: kramdown

@@ -24,11 +24,21 @@
   </head>
   <body>
     <header class="site-header">
-      <a class="site-title" href="{{ '/' | relative_url }}">{{ site.title | default: "Chengyu Bites" }}</a>
-      <nav class="site-nav">
-        <a href="{{ '/podcast.xml' | relative_url }}">Podcast RSS</a>
-      </nav>
-    </header>
+  <a class="brand" href="{{ '/' | relative_url }}">
+    <img
+      class="site-logo"
+      src="{{ site.logo | default: site.cover_image | relative_url }}"
+      alt="{{ site.title | default: 'Chengyu Bites' }} logo"
+      width="40" height="40"
+      decoding="async" loading="eager"
+    />
+    <span class="site-title">{{ site.title | default: "Chengyu Bites" }}</span>
+  </a>
+  <nav class="site-nav">
+    <a href="{{ '/podcast.xml' | relative_url }}">Podcast RSS</a>
+  </nav>
+</header>
+
 
     <main class="site-main">
       {{ content }}
