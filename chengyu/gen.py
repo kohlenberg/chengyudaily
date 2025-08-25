@@ -1,3 +1,4 @@
+# chengyu/gen.py
 import re, json
 from openai import OpenAI
 from .utils import normalize_chengyu
@@ -7,12 +8,9 @@ SYSTEM = (
     "Return ONLY valid JSON. No code fences."
 )
 
-# --- STEP A: pick a candidate idiom (batch) ---
+# -------- A) pick a batch of candidate idioms --------
 def pick_new_chengyu(model: str, batch_size: int = 20) -> list[str]:
-    """
-    Ask the model for a diverse list of candidate idioms. We will filter locally.
-    Returns a Python list of strings (Chinese characters only).
-    """
+    """Ask the model for a diverse list of idioms (characters only)."""
     client = OpenAI()
     prompt = f"""
 Return a JSON object with a single key "list" whose value is an array of {batch_size}
@@ -33,7 +31,7 @@ Example:
     lst = data.get("list") or []
     return [s for s in lst if isinstance(s, str) and s.strip()]
 
-# --- STEP B: generate full episode FOR a specific idiom ---
+# -------- B) generate full episode for a specific idiom --------
 def gen_episode_for(show_name: str, model: str, chengyu: str) -> dict:
     client = OpenAI()
     STRUCT = f"""
@@ -75,26 +73,74 @@ Return JSON with keys:
         assert isinstance(data.get(k), str) and data[k].strip()
     return data
 
-# --- STEP C: strict unique wrapper (no duplicates at all) ---
+# -------- C) strict unique wrapper (no duplicates ever) --------
 def gen_unique_episode_strict(show_name: str, model: str, forbidden: set[str],
                               batch_size: int = 20, max_rounds: int = 20) -> dict:
-    """
-    Never return a duplicate. We request batches, filter locally with the FULL forbidden set,
-    and only generate an episode after selecting an unseen idiom. If none found in a round,
-    try again up to max_rounds.
-    """
+    """Never return a duplicate: batch-pick → local filter → generate for chosen idiom → re-check."""
     forbid_norm = {normalize_chengyu(x) for x in forbidden}
     last_err = None
     for _ in range(max_rounds):
         candidates = pick_new_chengyu(model, batch_size=batch_size)
         for cand in candidates:
             if normalize_chengyu(cand) not in forbid_norm:
-                # Generate FOR this specific idiom
                 data = gen_episode_for(show_name, model, cand)
-                # Double-check the model didn't "morph" it:
                 if normalize_chengyu(data["chengyu"]) in forbid_norm:
                     last_err = f"Model returned duplicate after selection: {data['chengyu']}"
                     continue
                 return data
         last_err = f"No unseen idioms in batch of {len(candidates)}."
     raise RuntimeError(last_err or "Failed to find an unseen idiom")
+
+# -------- D) pretty Markdown formatting --------
+def script_to_markdown(chengyu: str, pinyin: str, gloss: str, teaser: str, script: str, model: str) -> str:
+    """Format the raw script into structured Markdown (no top-level H1)."""
+    client = OpenAI()
+    cleaned = re.sub(r"\[break\s*[0-9.]+s\]", " ", script or "")
+
+    SYS = ("You are a precise formatter. Turn a 成语 podcast script "
+           "into clean, concise Markdown sections. No code fences.")
+    INSTR = f"""
+Goal: Reformat "{chengyu} ({pinyin})" into Markdown (no H1; page already has title).
+
+Rules:
+- Use '##' for section headings only.
+- Characters section = Markdown table with columns: 字 | Pinyin | Meaning.
+- Examples: bullet list; each item 'Chinese<br>English'.
+- No SSML or [break] tags.
+
+Output exactly:
+
+> {teaser}
+
+## Overview
+{gloss}
+
+## Phrase
+**{chengyu}** — {pinyin}
+
+## Characters
+(Table with one row per character)
+
+## Origin
+(4–5 sentences.)
+
+## Examples
+- Chinese sentence<br>English translation
+- Chinese sentence<br>English translation
+- Chinese sentence<br>English translation
+
+## Closing
+(Repeat {chengyu} and give a one-line meaning/sign-off.)
+"""
+    resp = client.chat.completions.create(
+        model=model,
+        temperature=0.3,
+        messages=[
+            {"role":"system","content":SYS},
+            {"role":"user","content":INSTR},
+            {"role":"user","content":cleaned}
+        ]
+    )
+    md = resp.choices[0].message.content.strip()
+    # Strip accidental code fences
+    return re.sub(r"^```(?:markdown|md)?\s*|\s*```$", "", md, flags=re.S|re.I)
