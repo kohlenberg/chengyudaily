@@ -1,37 +1,42 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8"/>
-  <title>{{ page.title }} - {{ site.title }}</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <link rel="alternate" type="application/rss+xml" href="{{ '/podcast.xml' | relative_url }}">
-  <style>
-    :root{--bg:#0e1116;--card:#141821;--text:#e7eaf0;--muted:#9aa7bd;--border:#232938;--accent:#6ea8fe}
-    html,body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Inter,Roboto,Arial,sans-serif}
-    a{color:var(--accent);text-decoration:none} a:hover{text-decoration:underline}
-    header,footer{padding:24px 16px;border-bottom:1px solid var(--border)}
-    footer{border-top:1px solid var(--border);border-bottom:0;color:var(--muted)}
-    .wrap{max-width:900px;margin:0 auto;padding:0 16px}
-    h1{margin:0 0 8px 0}
-    main{padding:24px 16px}
-    audio{width:100%}
-    img.cover{max-width:320px;border-radius:12px;border:1px solid var(--border)}
-    .desc{color:#cfd6e6}
-  </style>
-</head>
-<body>
-  <header>
-    <div class="wrap">
-      <h1><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h1>
-      <div class="desc">{{ site.description }}</div>
-      <div><a href="{{ '/podcast.xml' | relative_url }}">RSS</a></div>
-    </div>
-  </header>
-  <main class="wrap">
-    {{ content }}
-  </main>
-  <footer>
-    <div class="wrap">© {{ site.time | date: "%Y" }} {{ site.title }}</div>
-  </footer>
-</body>
+  <head>
+    <meta charset="utf-8">
+    <title>{% if page.title %}{{ page.title }} · {% endif %}{{ site.title | default: "Chengyu Bites" }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="canonical" href="{{ page.url | absolute_url }}">
+
+    {% assign og_image = page.cover_image | default: site.cover_image %}
+    {% if og_image %}
+      <meta property="og:image" content="{{ og_image | absolute_url }}">
+      <meta name="twitter:card" content="summary_large_image">
+      <meta name="twitter:image" content="{{ og_image | absolute_url }}">
+    {% endif %}
+    <meta property="og:title" content="{{ page.title | default: site.title }}">
+    <meta property="og:url" content="{{ page.url | absolute_url }}">
+    {% if page.description or site.description %}
+      <meta name="description" content="{{ page.description | default: site.description }}">
+      <meta property="og:description" content="{{ page.description | default: site.description }}">
+    {% endif %}
+
+    <!-- One stylesheet for everything -->
+    <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="site-title" href="{{ '/' | relative_url }}">{{ site.title | default: "Chengyu Bites" }}</a>
+      <nav class="site-nav">
+        <a href="{{ '/podcast.xml' | relative_url }}">Podcast RSS</a>
+      </nav>
+    </header>
+
+    <main class="site-main">
+      {{ content }}
+    </main>
+
+    <footer class="site-footer">
+      <hr>
+      <div class="muted">© {{ site.time | date: '%Y' }} {{ site.author | default: 'Chengyu Bites' }}</div>
+    </footer>
+  </body>
 </html>

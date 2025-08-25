@@ -1,0 +1,29 @@
+---
+layout: default
+---
+
+<article class="post episode-card post-card">
+  {% if page.cover_image %}
+    <img class="episode-cover" src="{{ page.cover_image | relative_url }}" alt="{{ page.title }}">
+  {% endif %}
+
+  <header class="episode-head">
+    <h1 class="episode-title" style="margin:0 0 .25rem">{{ page.title }}</h1>
+    <p class="muted" style="margin:.1rem 0 .6rem">{{ page.date | date: "%B %d, %Y" }}</p>
+    {% if page.description %}
+      <p><em>{{ page.description }}</em></p>
+    {% endif %}
+  </header>
+
+  {% if page.audio_url %}
+    <div class="episode-audio">
+      <audio controls preload="metadata" playsinline>
+        <source src="{{ page.audio_url | relative_url }}" type="audio/mpeg">
+      </audio>
+    </div>
+  {% endif %}
+</article>
+
+<div class="post-content" style="margin-top:1rem;">
+  {{ content }}
+</div>

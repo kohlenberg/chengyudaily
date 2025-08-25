@@ -1,7 +1,15 @@
 title: "Chengyu Bites"
 description: "Short, conversational episodes exploring Chinese 成语."
 url: "https://kohlenberg.github.io"
-baseurl: "/chengyudaily"  # <= IMPORTANT (your repo name)
-timezone: "UTC"
+baseurl: "/chengyudaily"
+
+# Build settings (GitHub Pages-compatible)
 markdown: kramdown
-plugins: []
+theme: null
+
+# Exclude build artifacts if any
+exclude:
+  - build/
+  - .venv/
+  - .env
+  - README_local.md

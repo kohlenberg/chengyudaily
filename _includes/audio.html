@@ -1,0 +1,16 @@
+{% comment %}
+Usage:
+  {% include audio.html src=page.audio_url download=true %}
+- Pass site-local path (e.g., "/episodes/.../audio.mp3")
+- Automatically baseurl-correct via | relative_url
+{% endcomment %}
+{% assign _src = include.src %}
+{% if _src %}
+  <audio controls preload="metadata" playsinline style="width:100%;max-width:520px; margin:.5rem 0;">
+    <source src="{{ _src | relative_url }}" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+  {% if include.download %}
+    <p><a href="{{ _src | absolute_url }}" download>Download MP3</a></p>
+  {% endif %}
+{% endif %}

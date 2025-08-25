@@ -1,4 +1,5 @@
-name: Deploy Jekyll site to Pages
+name: Build & Deploy (Pages + RSS)
+
 on:
   push:
     branches: [ main ]
@@ -11,19 +12,30 @@ permissions:
 
 concurrency:
   group: "pages"
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      # build podcast.xml WITHOUT committing
+
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - run: pip install pyyaml requests
-      - run: python build_feed.py
+          cache: "pip"
+          cache-dependency-path: "requirements.txt"
+
+      - name: Install feed deps
+        run: pip install -r requirements.txt
+
+      - name: Build podcast feed
+        run: |
+          python build_feed.py
+          echo "Listing feed file:"
+          ls -l podcast.xml || true
+          test -s podcast.xml || (echo "ERROR: podcast.xml not created"; exit 1)
+
       - uses: actions/configure-pages@v4
       - uses: actions/jekyll-build-pages@v1
         with:

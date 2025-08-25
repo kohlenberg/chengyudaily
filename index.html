@@ -1,0 +1,32 @@
+---
+layout: default
+title: "Chengyu Bites"
+permalink: /
+---
+
+<h2>Episodes</h2>
+
+<ul class="episode-list">
+{% for post in site.posts %}
+  <li class="episode-card">
+    {% if post.cover_image %}
+      <img class="episode-cover" src="{{ post.cover_image | relative_url }}" alt="{{ post.title }}">
+    {% endif %}
+
+    <div class="episode-head">
+      <strong class="episode-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></strong>
+      {% if post.description %}
+        <div class="episode-desc">{{ post.description }}</div>
+      {% endif %}
+    </div>
+
+    {% if post.audio_url %}
+      <div class="episode-audio">
+        <audio controls preload="metadata" playsinline>
+          <source src="{{ post.audio_url | relative_url }}" type="audio/mpeg">
+        </audio>
+      </div>
+    {% endif %}
+  </li>
+{% endfor %}
+</ul>

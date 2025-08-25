@@ -1,0 +1,32 @@
+{% comment %}
+Usage in index.html:
+  {% include episode-card.html post=post %}
+{% endcomment %}
+<li class="episode-card">
+  {% if include.post.cover_image %}
+    <img
+      class="episode-cover"
+      src="{{ include.post.cover_image | relative_url }}"
+      alt="{{ include.post.title }}">
+  {% endif %}
+
+  <div class="episode-head">
+    <strong class="episode-title">
+      <a href="{{ include.post.url | relative_url }}">{{ include.post.title }}</a>
+    </strong>
+    {% if include.post.description %}
+      <div class="episode-desc muted">{{ include.post.description }}</div>
+    {% endif %}
+  </div>
+
+  {% if include.post.audio_url %}
+    <div class="episode-audio">
+      <audio controls preload="metadata" playsinline>
+        <source src="{{ include.post.audio_url | relative_url }}" type="audio/mpeg">
+      </audio>
+      <a class="episode-download" href="{{ include.post.audio_url | absolute_url }}" download>
+        Download MP3
+      </a>
+    </div>
+  {% endif %}
+</li>

@@ -1,0 +1,128 @@
+/* ------------------------------------------------------------
+   Theme
+------------------------------------------------------------ */
+:root {
+  color-scheme: dark;
+  --bg: #0d1117;
+  --fg: #e6edf3;
+  --muted: #9aa4b2;
+  --link: #8ab4f8;
+  --card-bg: rgba(255,255,255,.03);
+  --card-border: rgba(255,255,255,.08);
+  --hr: rgba(255,255,255,.08);
+}
+
+html, body { height: 100%; }
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font: 16px/1.6 -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+}
+
+a { color: var(--link); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+img { max-width: 100%; height: auto; display: block; }
+audio { width: 100%; background: #0b1220; border-radius: 8px; }
+
+/* Layout scaffold */
+.site-header, .site-main, .site-footer { max-width: 960px; margin: 0 auto; padding: 1rem; }
+.site-title { font-weight: 700; font-size: 1.25rem; }
+.site-nav a { margin-left: 1rem; }
+.muted { color: var(--muted); }
+hr { border: none; border-top: 1px solid var(--hr); margin: 1.5rem 0; }
+
+/* ------------------------------------------------------------
+   Episode list/card layout
+   - Left column: cover (spans 2 rows)
+   - Right column row 1: title + description
+   - Right column row 2: audio
+------------------------------------------------------------ */
+.episode-list { list-style: none; padding-left: 0; margin: 0; }
+
+.episode-card {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  grid-template-rows: auto auto;
+  grid-template-areas:
+    "cover head"
+    "cover audio";
+  gap: 0.75rem 1rem;
+  align-items: start;
+  margin: 1.25rem 0 2rem;
+  padding: 1rem;
+  border-radius: 12px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+}
+
+.episode-cover  { grid-area: cover; width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 10px; }
+.episode-head   { grid-area: head; }
+.episode-title  { display:block; font-size: 1.05rem; margin: 0 0 .15rem; }
+.episode-desc   { margin-top: .1rem; color: var(--muted); }
+
+.episode-audio  { grid-area: audio; }
+.episode-audio audio { width: 100%; max-width: 560px; }
+.episode-download { display:inline-block; margin-top:.4rem; font-size:.95rem; }
+
+/* Post page reusing the same card layout (optional helper) */
+.post-card { border: none; background: transparent; padding: 0; }
+
+/* Responsive: stack cleanly on small screens */
+@media (max-width: 560px) {
+  .episode-card {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    grid-template-areas:
+      "cover"
+      "head"
+      "audio";
+  }
+  .episode-cover { max-width: 260px; }
+}
+
+/* --- Post content polish --- */
+.post-content { margin-top: 1rem; }
+.post-content h2 { margin-top: 1.25rem; margin-bottom: .5rem; }
+
+/* Characters table */
+.post-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: .5rem 0 1rem;
+  background: rgba(255,255,255,.02);
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.post-content table th,
+.post-content table td {
+  padding: .6rem .7rem;
+  border-bottom: 1px solid var(--card-border);
+}
+.post-content table th {
+  text-align: left;
+  font-weight: 700;
+}
+.post-content table tr:last-child td {
+  border-bottom: none;
+}
+
+/* Examples list */
+.post-content ul { padding-left: 1.2rem; }
+.post-content li { margin: .5rem 0; }
+.post-content li br { content: ""; }
+
+/* Optional: “phrase card” emphasis */
+.phrase-card {
+  display: inline-block;
+  padding: .4rem .6rem;
+  border-radius: 8px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid var(--card-border);
+  margin: .25rem 0 .75rem;
+}
+
