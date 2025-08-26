@@ -3,10 +3,11 @@ layout: post
 title: 百闻不如一见 (bǎi wén bù rú yī jiàn)
 date: 2025-08-26 10:00:00 +0000
 description: Hearing a hundred times is not as good as seeing once.
-cover_image: /episodes/2025-08-26-bai-wen-bu-ru-yi-jian/cover.png
+cover_image: /episodes/2025-08-26-bai-wen-bu-ru-yi-jian/cover.jpg
 audio_url: /episodes/2025-08-26-bai-wen-bu-ru-yi-jian/audio.mp3
 audio_bytes: 1440768
 ---
+
 
 This idiom emphasizes the value of firsthand experience.
 
