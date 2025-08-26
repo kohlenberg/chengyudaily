@@ -129,8 +129,8 @@ CHANNEL_TITLE = text_or_empty(cfg.get("title") or "Chengyu Bites")
 CHANNEL_DESC  = text_or_empty(cfg.get("description") or "Short, conversational episodes exploring Chinese 成语.")
 CHANNEL_LANG  = text_or_empty(cfg.get("language") or "en")
 CHANNEL_AUTHOR= text_or_empty(cfg.get("author") or "Chengyu Bites")
-CHANNEL_OWNER = text_or_empty(cfg.get("owner_name") or CHANNEL_AUTHOR)
-CHANNEL_EMAIL = text_or_empty(cfg.get("owner_email") or "noreply@example.com")
+CHANNEL_OWNER = text_or_empty(cfg.get("owner_name") or "Tilman")
+CHANNEL_EMAIL = text_or_empty(cfg.get("owner_email") or "tkohlenberg@gmail.com")
 CHANNEL_IMAGE = text_or_empty(cfg.get("cover_image") or "")  # optional site-wide image
 
 SELF_URL = f"{SITE_URL}{BASEURL}/podcast.xml"
