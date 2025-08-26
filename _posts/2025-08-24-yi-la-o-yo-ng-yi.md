@@ -3,11 +3,12 @@ layout: post
 title: 一劳永逸 (yī láo yǒng yì)
 date: 2025-08-24 10:00:00 +0000
 description: One effort for lasting ease.
-cover_image: /episodes/2025-08-24-yi-la-o-yo-ng-yi/cover.png
+cover_image: /episodes/2025-08-24-yi-la-o-yo-ng-yi/cover.jpg
 audio_url: /episodes/2025-08-24-yi-la-o-yo-ng-yi/audio.mp3
 audio_bytes: 1365888
 audio_feed_url: https://github.com/kohlenberg/chengyudaily/releases/download/v20250824-yi-la-o-yo-ng-yi/2025-08-24-yi-la-o-yo-ng-yi.mp3
 ---
+
 
 ## Overview
 One effort for lasting ease.

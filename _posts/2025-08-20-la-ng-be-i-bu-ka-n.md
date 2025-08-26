@@ -2,10 +2,11 @@
 title: 狼狈不堪 (láng bèi bù kān)
 date: 2025-08-20 10:00:00 +0000
 description: in a difficult and embarrassing situation; in dire straits
-cover_image: /episodes/2025-08-20-la-ng-be-i-bu-ka-n/cover.png
+cover_image: /episodes/2025-08-20-la-ng-be-i-bu-ka-n/cover.jpg
 audio_url: /episodes/2025-08-20-la-ng-be-i-bu-ka-n/audio.mp3
 audio_bytes: 1315200
 ---
+
 
 ## Overview
 in a difficult and embarrassing situation; in dire straits

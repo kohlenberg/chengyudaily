@@ -1,13 +1,14 @@
 ---
-layout: "post"
-title: "自相矛盾 (zì xiāng máo dùn)"
-date: "2025-08-24 10:00:00 +0000"
-description: "to contradict oneself; self-contradiction"
-cover_image: "/episodes/2025-08-24-zi-xia-ng-ma-o-du-n/cover.png"
-audio_url: "/episodes/2025-08-24-zi-xia-ng-ma-o-du-n/audio.mp3"
+layout: post
+title: 自相矛盾 (zì xiāng máo dùn)
+date: 2025-08-24 10:00:00 +0000
+description: to contradict oneself; self-contradiction
+cover_image: /episodes/2025-08-24-zi-xia-ng-ma-o-du-n/cover.jpg
+audio_url: /episodes/2025-08-24-zi-xia-ng-ma-o-du-n/audio.mp3
 audio_bytes: 1328256
-audio_feed_url: "https://github.com/kohlenberg/chengyudaily/releases/download/v20250824-zi-xia-ng-ma-o-du-n/2025-08-24-zi-xia-ng-ma-o-du-n.mp3"
+audio_feed_url: https://github.com/kohlenberg/chengyudaily/releases/download/v20250824-zi-xia-ng-ma-o-du-n/2025-08-24-zi-xia-ng-ma-o-du-n.mp3
 ---
+
 
 # 自相矛盾 (zì xiāng máo dùn)
 > Today, we're diving into a phrase about contradictions and irony in our words and actions.

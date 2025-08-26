@@ -3,10 +3,11 @@ layout: post
 title: 井底之蛙 (jǐng dǐ zhī wā)
 date: 2025-08-25 10:00:00 +0000
 description: A frog at the bottom of a well; limited perspective.
-cover_image: /episodes/2025-08-25-jing-di-zhi-wa/cover.png
+cover_image: /episodes/2025-08-25-jing-di-zhi-wa/cover.jpg
 audio_url: /episodes/2025-08-25-jing-di-zhi-wa/audio.mp3
 audio_bytes: 1368960
 ---
+
 
 ## Overview
 A frog at the bottom of a well; limited perspective.

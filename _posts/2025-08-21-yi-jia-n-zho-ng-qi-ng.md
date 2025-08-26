@@ -3,11 +3,12 @@ layout: post
 title: 一见钟情 (yī jiàn zhōng qíng)
 date: 2025-08-21 10:00:00 +0000
 description: Love at first sight.
-cover_image: /episodes/2025-08-21-yi-jia-n-zho-ng-qi-ng/cover.png
+cover_image: /episodes/2025-08-21-yi-jia-n-zho-ng-qi-ng/cover.jpg
 audio_url: /episodes/2025-08-21-yi-jia-n-zho-ng-qi-ng/audio.mp3
 audio_bytes: 1203456
 audio_feed_url: https://github.com/kohlenberg/chengyudaily/releases/download/v20250821-yi-jia-n-zho-ng-qi-ng/2025-08-21-yi-jia-n-zho-ng-qi-ng.mp3
 ---
+
 
 ## Overview
 Love at first sight.

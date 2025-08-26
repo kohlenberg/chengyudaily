@@ -2,10 +2,11 @@
 title: 千钧一发 (qiān jūn yī fà)
 date: 2025-08-20 10:00:00 +0000
 description: A thousand pounds hanging by a hair; a critical moment
-cover_image: /episodes/2025-08-20-qia-n-ju-n-yi-fa/cover.png
+cover_image: /episodes/2025-08-20-qia-n-ju-n-yi-fa/cover.jpg
 audio_url: /episodes/2025-08-20-qia-n-ju-n-yi-fa/audio.mp3
 audio_bytes: 1340928
 ---
+
 
 ## Overview
 A thousand pounds hanging by a hair; a critical moment

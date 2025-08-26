@@ -3,11 +3,12 @@ layout: post
 title: 一石二鸟 (yī shí èr niǎo)
 date: 2025-08-21 10:00:00 +0000
 description: 'One stone, two birds: accomplish two tasks with one action.'
-cover_image: /episodes/2025-08-21-yi-shi-e-r-nia-o/cover.png
+cover_image: /episodes/2025-08-21-yi-shi-e-r-nia-o/cover.jpg
 audio_url: /episodes/2025-08-21-yi-shi-e-r-nia-o/audio.mp3
 audio_bytes: 1396992
 audio_feed_url: https://github.com/kohlenberg/chengyudaily/releases/download/v20250821-yi-shi-e-r-nia-o/2025-08-21-yi-shi-e-r-nia-o.mp3
 ---
+
 
 ## Overview
 One stone, two birds: accomplish two tasks with one action.

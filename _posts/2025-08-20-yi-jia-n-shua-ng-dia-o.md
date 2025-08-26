@@ -2,10 +2,11 @@
 title: 一箭双雕 (yī jiàn shuāng diāo)
 date: 2025-08-20 10:00:00 +0000
 description: One arrow, two eagles; achieving two goals with one action.
-cover_image: /episodes/2025-08-20-yi-jia-n-shua-ng-dia-o/cover.png
+cover_image: /episodes/2025-08-20-yi-jia-n-shua-ng-dia-o/cover.jpg
 audio_url: /episodes/2025-08-20-yi-jia-n-shua-ng-dia-o/audio.mp3
 audio_bytes: 1595520
 ---
+
 
 ## Overview
 One arrow, two eagles; achieving two goals with one action.

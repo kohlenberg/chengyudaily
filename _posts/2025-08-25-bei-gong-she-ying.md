@@ -3,10 +3,11 @@ layout: post
 title: 杯弓蛇影 (bēi gōng shé yǐng)
 date: 2025-08-25 10:00:00 +0000
 description: A cup, a bow, a snake's shadow; refers to unwarranted fears.
-cover_image: /episodes/2025-08-25-bei-gong-she-ying/cover.png
+cover_image: /episodes/2025-08-25-bei-gong-she-ying/cover.jpg
 audio_url: /episodes/2025-08-25-bei-gong-she-ying/audio.mp3
 audio_bytes: 397056
 ---
+
 
 Have you ever been scared by shadows? Let's dive into a story about fear and misunderstanding.
 
