@@ -3,10 +3,11 @@ layout: post
 title: 破釜沉舟 (pò fǔ chén zhōu)
 date: 2025-08-25 10:00:00 +0000
 description: Burning bridges and making a decisive commitment.
-cover_image: /episodes/2025-08-25-po-fu-chen-zhou/cover.png
+cover_image: /episodes/2025-08-25-po-fu-chen-zhou/cover.jpg
 audio_url: /episodes/2025-08-25-po-fu-chen-zhou/audio.mp3
 audio_bytes: 1356288
 ---
+
 
 > Today, we’ll explore a phrase about commitment and determination.
 

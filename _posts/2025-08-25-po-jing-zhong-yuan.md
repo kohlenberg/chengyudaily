@@ -3,10 +3,11 @@ layout: post
 title: 破镜重圆 (pò jìng zhòng yuán)
 date: 2025-08-25 10:00:00 +0000
 description: literally 'broken mirror rejoined', means to reunite after separation.
-cover_image: /episodes/2025-08-25-po-jing-zhong-yuan/cover.png
+cover_image: /episodes/2025-08-25-po-jing-zhong-yuan/cover.jpg
 audio_url: /episodes/2025-08-25-po-jing-zhong-yuan/audio.mp3
 audio_bytes: 1433856
 ---
+
 
 ## Overview
 Literally 'broken mirror rejoined', means to reunite after separation.
