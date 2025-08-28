@@ -8,19 +8,19 @@ audio_url: /episodes/2025-08-28-hu-jia-hu-wei/audio.mp3
 audio_bytes: 1704960
 ---
 
+
 ## Overview
 Using someone else's power to intimidate others.
 
 ## Phrase
 **狐假虎威** — hú jiǎ hǔ wēi
-
 ## Characters
-| 字 | Pinyin | Meaning               |
-|----|--------|-----------------------|
-| 狐  | hú     | fox                   |
-| 假  | jiǎ    | to pretend            |
-| 虎  | hǔ     | tiger                 |
-| 威  | wēi    | power or might        |
+
+狐 (hú) — fox  
+假 (jiǎ) — to pretend  
+虎 (hǔ) — tiger  
+威 (wēi) — power or might
+
 
 ## Origin
 In ancient times, a fox encountered a tiger and was terrified of being eaten. To save itself, the fox cleverly claimed that it was the king of all animals and that if the tiger harmed it, all the animals would retaliate. The tiger, confused but intrigued, allowed the fox to pass, believing it had some power. This story illustrates how the fox used the tiger's fearsome reputation to its advantage.
