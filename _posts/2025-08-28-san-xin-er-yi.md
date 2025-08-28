@@ -10,6 +10,7 @@ audio_bytes: 1395456
 ---
 
 
+
 ## Overview
 Literal: three hearts and two intentions; Figurative: indecisive or distracted.
 
@@ -23,7 +24,6 @@ Literal: three hearts and two intentions; Figurative: indecisive or distracted.
 | 心 | xīn    | heart             |
 | 二 | èr     | two               |
 | 意 | yì     | intention or mind  |
-
 ## Origin
 This idiom originates from an ancient tale where a man was so torn between two choices that he thought of three different outcomes. He could neither commit to one nor the other, hence he had 'three hearts and two intentions.' This reflects the struggle many face when making decisions, leading to confusion and inaction.
 

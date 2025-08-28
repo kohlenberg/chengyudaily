@@ -8,6 +8,7 @@ audio_url: /episodes/2025-08-28-bai-fa-bai-zhong/audio.mp3
 audio_bytes: 1272960
 ---
 
+
 ## Overview
 Hit the target every time; to be highly accurate.
 
@@ -22,7 +23,6 @@ Hit the target every time; to be highly accurate.
 | 发 | fā     | to shoot               |
 | 百 | bǎi    | hundred                |
 | 中 | zhòng  | to hit / to be successful |
-
 ## Origin
 This idiom originates from archery, where a skilled archer could shoot a hundred arrows and hit the target every single time. It reflects not only skill but also confidence in one’s abilities. Over time, it has expanded beyond archery to describe anyone who consistently achieves success.
 

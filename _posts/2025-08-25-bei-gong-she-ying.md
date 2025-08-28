@@ -9,6 +9,7 @@ audio_bytes: 397056
 ---
 
 
+
 Have you ever been scared by shadows? Let's dive into a story about fear and misunderstanding.
 
 ## Overview
@@ -25,7 +26,6 @@ A cup, a bow, a snake's shadow; refers to unwarranted fears.
 | 弓 | gōng   | bow      |
 | 蛇 | shé    | snake    |
 | 影 | yǐng   | shadow   |
-
 ## Origin
 The idiom originates from a story in ancient China where a man mistook the shadow of a bow on a cup for a snake. This misunderstanding led to unnecessary fear and anxiety. It illustrates how our minds can create fears based on misinterpretations of reality. The phrase serves as a reminder to not let our imaginations run wild.
 
