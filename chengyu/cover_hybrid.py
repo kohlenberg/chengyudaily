@@ -158,6 +158,7 @@ Layout & rules (strict):
 - DO NOT include any Latin letters or English at all. No pinyin. No extra Chinese text beyond {chengyu}.
 - Warm rice-paper texture; visible fibers and ink washes.
 - Keep canvas edges light; avoid solid dark bands at the top.
+- Avoid star-like gold speckles or granular spray at the top edge.
 - Leave room below the characters for small Latin text additions later.
 - No borders, frames, or watermarks.
 """

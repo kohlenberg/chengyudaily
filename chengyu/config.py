@@ -11,7 +11,8 @@ class Settings:
     TTS_VOICE: str = os.getenv("TTS_VOICE", "alloy")
     # chengyu/config.py (add near other fields)
     IMAGE_MODEL: str = os.getenv("IMAGE_MODEL", "gpt-image-1")
-    IMAGE_SIZE: int = int(os.getenv("IMAGE_SIZE", "1024"))  # 1024 or 2048 are safe
+    #IMAGE_SIZE: int = int(os.getenv("IMAGE_SIZE", "1024"))  # 1024 or 2048 are safe
+    IMAGE_SIZE = "1024x1024"   # supported: "1024x1024", "1024x1536", "1536x1024", "auto"
 
 
     REPO: str = os.getenv("REPO", "kohlenberg/chengyudaily")
