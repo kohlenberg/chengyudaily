@@ -10,6 +10,7 @@ audio_bytes: 1440768
 
 
 
+
 This idiom emphasizes the value of firsthand experience.
 
 ## Overview
@@ -21,7 +22,7 @@ Hearing a hundred times is not as good as seeing once.
 ## Characters
 
 | 字 | Pinyin | Meaning        |
-|----|--------|----------------|
+| --- | --- | --- |
 | 百 | bǎi   | hundred        |
 | 闻 | wén    | to hear        |
 | 不 | bù     | not            |

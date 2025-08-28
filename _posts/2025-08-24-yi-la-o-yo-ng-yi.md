@@ -11,6 +11,7 @@ audio_feed_url: https://github.com/kohlenberg/chengyudaily/releases/download/v20
 
 
 
+
 ## Overview
 One effort for lasting ease.
 
@@ -20,7 +21,7 @@ One effort for lasting ease.
 ## Characters
 
 | 字 | Pinyin | Meaning          |
-|----|--------|------------------|
+| --- | --- | --- |
 | 一  | yī     | one              |
 | 劳  | láo    | labor/work       |
 | 永  | yǒng   | forever/eternal  |

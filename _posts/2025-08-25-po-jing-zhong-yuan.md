@@ -10,6 +10,7 @@ audio_bytes: 1433856
 
 
 
+
 ## Overview
 Literally 'broken mirror rejoined', means to reunite after separation.
 
@@ -19,7 +20,7 @@ Literally 'broken mirror rejoined', means to reunite after separation.
 ## Characters
 
 | 字 | Pinyin | Meaning         |
-|----|--------|------------------|
+| --- | --- | --- |
 | 破 | pò     | to break         |
 | 镜 | jìng   | mirror           |
 | 重 | zhòng  | to rejoin        |

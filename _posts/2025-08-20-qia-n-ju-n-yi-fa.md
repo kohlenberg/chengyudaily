@@ -9,6 +9,7 @@ audio_bytes: 1340928
 
 
 
+
 ## Overview
 A thousand pounds hanging by a hair; a critical moment
 
@@ -18,7 +19,7 @@ A thousand pounds hanging by a hair; a critical moment
 ## Characters
 
 | 字 | Pinyin | Meaning         |
-|----|--------|------------------|
+| --- | --- | --- |
 | 千 | qiān   | thousand         |
 | 钧 | jūn    | pound            |
 | 一 | yī     | one              |

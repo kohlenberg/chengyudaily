@@ -9,6 +9,7 @@ audio_bytes: 1315200
 
 
 
+
 ## Overview
 in a difficult and embarrassing situation; in dire straits
 
@@ -18,7 +19,7 @@ in a difficult and embarrassing situation; in dire straits
 ## Characters
 
 | 字  | Pinyin | Meaning          |
-|-----|--------|------------------|
+| --- | --- | --- |
 | 狼  | láng   | wolf             |
 | 狈  | bèi    | in difficulty     |
 | 不  | bù     | not              |

@@ -10,6 +10,7 @@ audio_bytes: 1356288
 
 
 
+
 > Today, we’ll explore a phrase about commitment and determination.
 
 ## Overview
@@ -21,7 +22,7 @@ Burning bridges and making a decisive commitment.
 ## Characters
 
 | 字 | Pinyin | Meaning      |
-|----|--------|--------------|
+| --- | --- | --- |
 | 破 | pò     | to break     |
 | 釜 | fǔ     | cauldron     |
 | 沉 | chén   | to sink      |

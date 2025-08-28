@@ -9,6 +9,7 @@ audio_bytes: 1481088
 ---
 
 
+
 ## Overview
 Loss can lead to unexpected fortune.
 
@@ -18,7 +19,7 @@ Loss can lead to unexpected fortune.
 ## Characters
 
 | 字 | Pinyin     | Meaning             |
-|----|------------|---------------------|
+| --- | --- | --- |
 | 塞 | sài        | to stop, to block    |
 | 翁 | wēng       | old man              |
 | 失 | shī        | to lose              |

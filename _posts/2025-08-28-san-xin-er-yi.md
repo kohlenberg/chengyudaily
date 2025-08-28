@@ -11,6 +11,7 @@ audio_bytes: 1395456
 
 
 
+
 ## Overview
 Literal: three hearts and two intentions; Figurative: indecisive or distracted.
 
@@ -19,7 +20,7 @@ Literal: three hearts and two intentions; Figurative: indecisive or distracted.
 
 ## Characters
 | 字 | Pinyin | Meaning           |
-|----|--------|-------------------|
+| --- | --- | --- |
 | 三 | sān    | three             |
 | 心 | xīn    | heart             |
 | 二 | èr     | two               |

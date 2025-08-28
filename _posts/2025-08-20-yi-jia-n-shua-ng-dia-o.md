@@ -9,6 +9,7 @@ audio_bytes: 1595520
 
 
 
+
 ## Overview
 One arrow, two eagles; achieving two goals with one action.
 
@@ -18,7 +19,7 @@ One arrow, two eagles; achieving two goals with one action.
 ## Characters
 
 | 字  | Pinyin | Meaning |
-|-----|--------|---------|
+| --- | --- | --- |
 | 一   | yī     | one     |
 | 箭   | jiàn   | arrow   |
 | 双   | shuāng | double   |

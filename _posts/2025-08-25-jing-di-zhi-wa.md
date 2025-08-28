@@ -10,6 +10,7 @@ audio_bytes: 1368960
 
 
 
+
 ## Overview
 A frog at the bottom of a well; limited perspective.
 
@@ -19,7 +20,7 @@ A frog at the bottom of a well; limited perspective.
 ## Characters
 
 | 字 | Pinyin | Meaning         |
-|----|--------|------------------|
+| --- | --- | --- |
 | 井 | jǐng   | well             |
 | 底 | dǐ     | bottom           |
 | 之 | zhī    | possessive particle, like 'of' |

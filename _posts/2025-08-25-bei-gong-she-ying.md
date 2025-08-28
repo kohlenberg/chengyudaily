@@ -10,6 +10,7 @@ audio_bytes: 397056
 
 
 
+
 Have you ever been scared by shadows? Let's dive into a story about fear and misunderstanding.
 
 ## Overview
@@ -21,7 +22,7 @@ A cup, a bow, a snake's shadow; refers to unwarranted fears.
 ## Characters
 
 | 字 | Pinyin | Meaning  |
-|----|--------|----------|
+| --- | --- | --- |
 | 杯 | bēi    | cup      |
 | 弓 | gōng   | bow      |
 | 蛇 | shé    | snake    |

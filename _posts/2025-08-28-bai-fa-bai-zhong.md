@@ -9,6 +9,7 @@ audio_bytes: 1272960
 ---
 
 
+
 ## Overview
 Hit the target every time; to be highly accurate.
 
@@ -18,7 +19,7 @@ Hit the target every time; to be highly accurate.
 ## Characters
 
 | 字 | Pinyin | Meaning                |
-|----|--------|------------------------|
+| --- | --- | --- |
 | 百 | bǎi    | hundred                |
 | 发 | fā     | to shoot               |
 | 百 | bǎi    | hundred                |

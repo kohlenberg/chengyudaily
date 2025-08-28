@@ -11,6 +11,7 @@ audio_feed_url: https://github.com/kohlenberg/chengyudaily/releases/download/v20
 
 
 
+
 # 自相矛盾 (zì xiāng máo dùn)
 > Today, we're diving into a phrase about contradictions and irony in our words and actions.
 
@@ -23,7 +24,7 @@ to contradict oneself; self-contradiction
 ## Characters
 
 | 字   | Pinyin      | Meaning          |
-|------|-------------|------------------|
+| --- | --- | --- |
 | 自   | zì          | self             |
 | 相   | xiāng       | each other/mutual|
 | 矛   | máo         | spear            |

@@ -11,6 +11,7 @@ audio_feed_url: https://github.com/kohlenberg/chengyudaily/releases/download/v20
 
 
 
+
 ## Overview
 Love at first sight.
 
@@ -20,7 +21,7 @@ Love at first sight.
 ## Characters
 
 | 字 | Pinyin | Meaning          |
-|----|--------|------------------|
+| --- | --- | --- |
 | 一  | yī     | one              |
 | 见  | jiàn   | see              |
 | 钟  | zhōng  | bell or to hit   |
