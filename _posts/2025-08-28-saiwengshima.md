@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 塞翁失马 (sàiwēngshīmǎ)
+title: 塞翁失马 (sài wēng shī mǎ)
 date: '2025-08-28 10:16:28'
 description: Loss can lead to unexpected fortune.
 cover_image: /episodes/2025-08-28-saiwengshima/cover.jpeg
@@ -12,7 +12,7 @@ audio_bytes: 1481088
 Loss can lead to unexpected fortune.
 
 ## Phrase
-**塞翁失马** — sàiwēngshīmǎ
+**塞翁失马** — sài wēng shī mǎ
 
 ## Characters
 
