@@ -5,9 +5,10 @@ date: 2025-08-28 10:00:00 +0000
 description: Literally 'rise and dance at the sound of a chicken'; figuratively means
   to wake up early to practice or seize opportunities.
 cover_image: /episodes/2025-08-28-wen-ji-qi-wu/cover.jpeg
-audio_url: /episodes/2025-08-28-wen-ji-qi-wu/audio.mp3
+audio_url: https://github.com/kohlenberg/chengyudaily/releases/download/v20250828-wen-ji-qi-wu/2025-08-28-wen-ji-qi-wu.mp3
 audio_bytes: 1459968
 ---
+
 
 Welcome to Chengyu Bites — your quick summary on Chinese 成语. Ever thought about how a simple sound can inspire great actions?
 
