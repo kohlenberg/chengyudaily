@@ -4,6 +4,12 @@ url: "https://kohlenberg.github.io"
 baseurl: "/chengyudaily"
 cover_image: "/assets/img/podcast-logo.png"
 logo: "/assets/img/podcast-logo.png"
+author: "Tilman"
+email: "tkohlenberg@gmail.com"
+owner_name: "Tilman"
+owner_email: "tkohlenberg@gmail.com"
+
+  
 
 
 # Build settings (GitHub Pages-compatible)
