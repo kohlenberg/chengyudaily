@@ -10,20 +10,21 @@ audio_bytes: 1481088
 
 
 
+
 ## Overview
 Loss can lead to unexpected fortune.
 
 ## Phrase
 **塞翁失马** — sài wēng shī mǎ
-
 ## Characters
 
-| 字 | Pinyin     | Meaning             |
-| --- | --- | --- |
-| 塞 | sài        | to stop, to block    |
-| 翁 | wēng       | old man              |
-| 失 | shī        | to lose              |
-| 马 | mǎ         | horse                |
+
+塞 (sài) — to stop, to block  
+翁 (wēng) — old man  
+失 (shī) — to lose  
+马 (mǎ) — horse
+
+
 ## Origin
 There was once an old man living near a border who lost his horse. His neighbors lamented his loss, but he simply said, "Maybe it's a good thing." Later, the horse returned with another horse, and the neighbors congratulated him. But the old man replied, "Maybe it's not a good thing." Soon after, his son fell from the new horse and broke his leg. While everyone was concerned, he again said, "Maybe it's a good thing." Eventually, war broke out, and his son was spared due to his injury.
 

@@ -12,20 +12,21 @@ audio_feed_url: https://github.com/kohlenberg/chengyudaily/releases/download/v20
 
 
 
+
 ## Overview
 One stone, two birds: accomplish two tasks with one action.
 
 ## Phrase
 **一石二鸟** — yī shí èr niǎo
-
 ## Characters
 
-| 字 | Pinyin | Meaning          |
-| --- | --- | --- |
-| 一  | yī     | one              |
-| 石  | shí    | stone            |
-| 二  | èr     | two              |
-| 鸟  | niǎo   | bird             |
+
+一 (yī) — one  
+石 (shí) — stone  
+二 (èr) — two  
+鸟 (niǎo) — bird
+
+
 ## Origin
 This idiom originates from hunting practices. Imagine a hunter who skillfully throws a stone, hitting two birds at once. This clever tactic symbolizes efficiency and resourcefulness, making it a popular saying in various contexts.
 

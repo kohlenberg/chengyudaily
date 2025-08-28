@@ -10,20 +10,21 @@ audio_bytes: 1340928
 
 
 
+
 ## Overview
 A thousand pounds hanging by a hair; a critical moment
 
 ## Phrase
 **千钧一发** — qiān jūn yī fà
-
 ## Characters
 
-| 字 | Pinyin | Meaning         |
-| --- | --- | --- |
-| 千 | qiān   | thousand         |
-| 钧 | jūn    | pound            |
-| 一 | yī     | one              |
-| 发 | fà     | hair             |
+
+千 (qiān) — thousand  
+钧 (jūn) — pound  
+一 (yī) — one  
+发 (fà) — hair
+
+
 ## Origin
 This idiom originates from ancient China, where a 'jūn' is a unit of weight. Imagine a heavy weight, like a thousand pounds, delicately balanced on a single hair. If that hair snaps, the weight falls, signifying the precariousness of the situation. Over time, this expression evolved into a metaphor for moments where everything hangs in the balance.
 

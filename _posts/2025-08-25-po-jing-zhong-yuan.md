@@ -11,20 +11,21 @@ audio_bytes: 1433856
 
 
 
+
 ## Overview
 Literally 'broken mirror rejoined', means to reunite after separation.
 
 ## Phrase
 **破镜重圆** — pò jìng zhòng yuán
-
 ## Characters
 
-| 字 | Pinyin | Meaning         |
-| --- | --- | --- |
-| 破 | pò     | to break         |
-| 镜 | jìng   | mirror           |
-| 重 | zhòng  | to rejoin        |
-| 圆 | yuán   | round or complete |
+
+破 (pò) — to break  
+镜 (jìng) — mirror  
+重 (zhòng) — to rejoin  
+圆 (yuán) — round or complete
+
+
 ## Origin
 In ancient times, a couple was deeply in love but faced challenges that forced them apart. They were separated for many years, each believing they would never see the other again. One day, they accidentally met again and realized their love had never faded. This reunion felt like putting together the pieces of a broken mirror, symbolizing the restoration of their relationship.
 

@@ -10,20 +10,21 @@ audio_bytes: 1272960
 
 
 
+
 ## Overview
 Hit the target every time; to be highly accurate.
 
 ## Phrase
 **百发百中** — bǎi fā bǎi zhòng
-
 ## Characters
 
-| 字 | Pinyin | Meaning                |
-| --- | --- | --- |
-| 百 | bǎi    | hundred                |
-| 发 | fā     | to shoot               |
-| 百 | bǎi    | hundred                |
-| 中 | zhòng  | to hit / to be successful |
+
+百 (bǎi) — hundred  
+发 (fā) — to shoot  
+百 (bǎi) — hundred  
+中 (zhòng) — to hit / to be successful
+
+
 ## Origin
 This idiom originates from archery, where a skilled archer could shoot a hundred arrows and hit the target every single time. It reflects not only skill but also confidence in one’s abilities. Over time, it has expanded beyond archery to describe anyone who consistently achieves success.
 

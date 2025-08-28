@@ -12,20 +12,21 @@ audio_feed_url: https://github.com/kohlenberg/chengyudaily/releases/download/v20
 
 
 
+
 ## Overview
 Love at first sight.
 
 ## Phrase
 **一见钟情** — yī jiàn zhōng qíng
-
 ## Characters
 
-| 字 | Pinyin | Meaning          |
-| --- | --- | --- |
-| 一  | yī     | one              |
-| 见  | jiàn   | see              |
-| 钟  | zhōng  | bell or to hit   |
-| 情  | qíng   | feelings or love  |
+
+一 (yī) — one  
+见 (jiàn) — see  
+钟 (zhōng) — bell or to hit  
+情 (qíng) — feelings or love
+
+
 ## Origin
 This idiom originates from a famous love story in ancient China, where a young scholar saw a beautiful woman at first sight and was instantly captivated by her charm. This moment of profound attraction led to a passionate romance, illustrating that sometimes love can strike like a bell ringing unexpectedly.
 

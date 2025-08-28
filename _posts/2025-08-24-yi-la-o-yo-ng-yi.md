@@ -12,20 +12,21 @@ audio_feed_url: https://github.com/kohlenberg/chengyudaily/releases/download/v20
 
 
 
+
 ## Overview
 One effort for lasting ease.
 
 ## Phrase
 **一劳永逸** — yī láo yǒng yì
-
 ## Characters
 
-| 字 | Pinyin | Meaning          |
-| --- | --- | --- |
-| 一  | yī     | one              |
-| 劳  | láo    | labor/work       |
-| 永  | yǒng   | forever/eternal  |
-| 逸  | yì     | ease/comfort     |
+
+一 (yī) — one  
+劳 (láo) — labor/work  
+永 (yǒng) — forever/eternal  
+逸 (yì) — ease/comfort
+
+
 ## Origin
 This idiom originates from the idea that if you put in the necessary effort and hard work now, you can avoid future troubles and enjoy lasting comfort. It emphasizes the value of diligence and foresight in achieving lasting results. In ancient times, farmers who worked hard during the planting season would ensure a good harvest, allowing them to relax later.
 

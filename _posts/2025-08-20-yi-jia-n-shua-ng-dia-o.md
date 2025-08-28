@@ -10,20 +10,21 @@ audio_bytes: 1595520
 
 
 
+
 ## Overview
 One arrow, two eagles; achieving two goals with one action.
 
 ## Phrase
 **一箭双雕** — yī jiàn shuāng diāo
-
 ## Characters
 
-| 字  | Pinyin | Meaning |
-| --- | --- | --- |
-| 一   | yī     | one     |
-| 箭   | jiàn   | arrow   |
-| 双   | shuāng | double   |
-| 雕   | diāo   | eagle   |
+
+一 (yī) — one  
+箭 (jiàn) — arrow  
+双 (shuāng) — double  
+雕 (diāo) — eagle
+
+
 ## Origin
 This idiom originates from a historical figure named Yang Ye, a skilled archer during the Northern Song dynasty. He once shot an arrow that struck two eagles soaring in the sky at once. This remarkable feat was celebrated and turned into an idiom, emphasizing the idea of accomplishing two tasks simultaneously.
 

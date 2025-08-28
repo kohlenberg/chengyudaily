@@ -11,6 +11,7 @@ audio_bytes: 1440768
 
 
 
+
 This idiom emphasizes the value of firsthand experience.
 
 ## Overview
@@ -18,17 +19,17 @@ Hearing a hundred times is not as good as seeing once.
 
 ## Phrase
 **百闻不如一见** — bǎi wén bù rú yī jiàn
-
 ## Characters
 
-| 字 | Pinyin | Meaning        |
-| --- | --- | --- |
-| 百 | bǎi   | hundred        |
-| 闻 | wén    | to hear        |
-| 不 | bù     | not            |
-| 如 | rú     | as             |
-| 一 | yī     | one            |
-| 见 | jiàn   | to see         |
+
+百 (bǎi) — hundred  
+闻 (wén) — to hear  
+不 (bù) — not  
+如 (rú) — as  
+一 (yī) — one  
+见 (jiàn) — to see
+
+
 ## Origin
 This idiom comes from ancient Chinese literature, where it was often noted that stories could be embellished or misinterpreted. A direct experience, however, provides clarity and understanding. Thus, the phrase encourages individuals to seek out real-life encounters instead of relying solely on hearsay.
 

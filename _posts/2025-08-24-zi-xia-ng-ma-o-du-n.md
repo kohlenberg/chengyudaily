@@ -12,6 +12,7 @@ audio_feed_url: https://github.com/kohlenberg/chengyudaily/releases/download/v20
 
 
 
+
 # 自相矛盾 (zì xiāng máo dùn)
 > Today, we're diving into a phrase about contradictions and irony in our words and actions.
 
@@ -20,15 +21,15 @@ to contradict oneself; self-contradiction
 
 ## Phrase
 **自相矛盾** — zì xiāng máo dùn
-
 ## Characters
 
-| 字   | Pinyin      | Meaning          |
-| --- | --- | --- |
-| 自   | zì          | self             |
-| 相   | xiāng       | each other/mutual|
-| 矛   | máo         | spear            |
-| 盾   | dùn         | shield           |
+
+自 (zì) — self  
+相 (xiāng) — each other/mutual  
+矛 (máo) — spear  
+盾 (dùn) — shield
+
+
 ## Origin
 This idiom originates from an ancient tale about a man who was trying to sell a spear and a shield. He claimed that his spear could pierce any shield and that his shield could withstand any spear. When asked what would happen if his spear met his shield, he found himself in a contradiction. This story illustrates how sometimes our statements can conflict with one another.
 

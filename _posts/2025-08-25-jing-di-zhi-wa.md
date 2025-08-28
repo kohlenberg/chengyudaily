@@ -11,20 +11,21 @@ audio_bytes: 1368960
 
 
 
+
 ## Overview
 A frog at the bottom of a well; limited perspective.
 
 ## Phrase
 **井底之蛙** — jǐng dǐ zhī wā
-
 ## Characters
 
-| 字 | Pinyin | Meaning         |
-| --- | --- | --- |
-| 井 | jǐng   | well             |
-| 底 | dǐ     | bottom           |
-| 之 | zhī    | possessive particle, like 'of' |
-| 蛙 | wā     | frog             |
+
+井 (jǐng) — well  
+底 (dǐ) — bottom  
+之 (zhī) — possessive particle, like 'of'  
+蛙 (wā) — frog
+
+
 ## Origin
 Long ago, a frog lived at the bottom of a well and thought it was the entire world. One day, a turtle from the ocean came to visit and told the frog about the vastness of the sea. The frog couldn't comprehend it, believing its well was all there was. This story teaches us to open our eyes to the bigger world beyond our own experiences.
 

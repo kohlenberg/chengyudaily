@@ -10,20 +10,21 @@ audio_bytes: 1315200
 
 
 
+
 ## Overview
 in a difficult and embarrassing situation; in dire straits
 
 ## Phrase
 **狼狈不堪** — láng bèi bù kān
-
 ## Characters
 
-| 字  | Pinyin | Meaning          |
-| --- | --- | --- |
-| 狼  | láng   | wolf             |
-| 狈  | bèi    | in difficulty     |
-| 不  | bù     | not              |
-| 堪  | kān    | to endure        |
+
+狼 (láng) — wolf  
+狈 (bèi) — in difficulty  
+不 (bù) — not  
+堪 (kān) — to endure
+
+
 ## Origin
 In ancient times, there was a story about a wolf that found itself trapped in a net. The more it struggled, the more tangled it became, making its situation worse. Observing this, people would often refer to anyone caught in a predicament as being 'like the trapped wolf'—thus giving rise to this idiom.
 
