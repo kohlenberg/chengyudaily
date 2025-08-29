@@ -6,7 +6,7 @@ Publish a new episode to the GitHub repo.
 - Prefers repo-hosted MP3s (episodes/<date>-<slug>/audio.mp3).
 - Optional: upload MP3 to GitHub Release instead.
 - Light sanitizer + converts "Characters" tables to simple lines.
-- Safe git clone (no interactive prompts, timeout).
+- Safe git clone/push (no prompts, low-speed timeouts, retry push).
 
 Usage:
     publish_episode(
@@ -15,7 +15,7 @@ Usage:
         branch="main",
         site_url="https://kohlenberg.github.io/chengyudaily",
         baseurl="/chengyudaily",
-        publish_time_utc="09:00:00",   # kept for compatibility
+        publish_time_utc="09:00:00",   # kept for compatibility with older calls
         data={ "chengyu": "...", "pinyin": "...", "gloss": "...", "teaser": "...", "script": "..." },
         body_md=body_md,               # already-structured episode Markdown
         cover_bytes=cover_img_bytes,
@@ -49,27 +49,34 @@ def _slugify(text: str) -> str:
     return txt or "episode"
 
 
-def _run(cmd, cwd=None, quiet_token=False, timeout: Optional[int] = None, env: Optional[dict] = None):
-    shown = " ".join(("***" if (quiet_token and "@" in str(x)) else str(x) for x in cmd))
+def _git_env():
+    """Environment for git: no prompts, stall detection."""
+    env = os.environ.copy()
+    env["GIT_TERMINAL_PROMPT"] = "0"
+    env["GIT_ASKPASS"] = "true"
+    # low-speed settings to fail on long stalls
+    env.setdefault("GIT_HTTP_LOW_SPEED_LIMIT", "1")  # bytes/sec
+    env.setdefault("GIT_HTTP_LOW_SPEED_TIME", "30")  # seconds
+    return env
+
+
+def _run_git(args, cwd, timeout: int = 180):
+    """Run a git command with low-speed limits and no prompts."""
+    cmd = ["git", "-c", "http.lowSpeedLimit=1", "-c", "http.lowSpeedTime=30", *args]
+    shown = " ".join(("***" if "@" in str(x) else str(x) for x in cmd))
     print("+", shown)
-    subprocess.run(cmd, cwd=cwd, check=True, timeout=timeout, env=env)
+    subprocess.run(cmd, cwd=cwd, check=True, timeout=timeout, env=_git_env())
 
 
 def _git_clone(repo_url: str, branch: str, dest: str, timeout: int = 120):
     """Clone with no interactive prompts and sensible http timeouts."""
-    env = os.environ.copy()
-    env["GIT_TERMINAL_PROMPT"] = "0"
-    env["GIT_ASKPASS"] = "true"
-    _run([
-        "git",
-        "-c", "http.lowSpeedLimit=1",
-        "-c", "http.lowSpeedTime=30",
+    _run_git([
         "clone",
         "--filter=blob:none",
         "--depth", "1",
         "--branch", branch,
         repo_url, dest
-    ], quiet_token=True, timeout=timeout, env=env)
+    ], cwd=None, timeout=timeout)
 
 
 def _gh_token() -> str:
@@ -123,6 +130,7 @@ def _sanitize_tables_min(md: str) -> str:
             ln = ln.replace("—", "-").replace("–", "-")
         out.append(ln)
     return "\n".join(out)
+
 
 def _characters_table_to_lines(md: str) -> str:
     """
@@ -258,8 +266,8 @@ def publish_episode(
         repo_url = f"https://{token}@github.com/{repo}.git"
 
         _git_clone(repo_url, branch, tmp, timeout=timeout_clone)
-        _run(["git", "config", "user.name", "Chengyu Publisher Bot"], cwd=tmp)
-        _run(["git", "config", "user.email", "actions@users.noreply.github.com"], cwd=tmp)
+        _run_git(["config", "user.name", "Chengyu Publisher Bot"], cwd=tmp, timeout=30)
+        _run_git(["config", "user.email", "actions@users.noreply.github.com"], cwd=tmp, timeout=30)
 
         ep_dir = Path(tmp) / "episodes" / folder
         ep_dir.mkdir(parents=True, exist_ok=True)
@@ -289,11 +297,29 @@ def publish_episode(
         front = "---\n" + yaml.safe_dump(fm, allow_unicode=True, sort_keys=False) + "---\n\n"
         post_path.write_text(front + safe_body + "\n", encoding="utf-8")
 
-        # commit & push
-        _run(["git", "add", "."], cwd=tmp)
-        _run(["git", "commit", "-m", f"Add episode {folder}"], cwd=tmp)
+        # commit
+        _run_git(["add", "."], cwd=tmp, timeout=90)
+        _run_git(["commit", "-m", f"Add episode {folder}"], cwd=tmp, timeout=90)
+
+        # push (with retry)
         if not dry_run:
-            _run(["git", "push", "origin", branch], cwd=tmp, quiet_token=True)
+            try:
+                _run_git(["push", "origin", branch], cwd=tmp, timeout=240)
+            except subprocess.TimeoutExpired:
+                print("Push timed out; attempting pull --rebase then retry…")
+                try:
+                    _run_git(["pull", "--rebase", "origin", branch], cwd=tmp, timeout=120)
+                except Exception as e:
+                    print("Rebase pull failed (continuing to retry push):", e)
+                _run_git(["push", "origin", branch], cwd=tmp, timeout=240)
+            except subprocess.CalledProcessError as e:
+                print("Initial push failed; attempting pull --rebase then retry…", e)
+                try:
+                    _run_git(["pull", "--rebase", "origin", branch], cwd=tmp, timeout=120)
+                except Exception as e2:
+                    print("Rebase pull failed (continuing to retry push):", e2)
+                _run_git(["push", "origin", branch], cwd=tmp, timeout=240)
+
             # Print canonical page URL (Jekyll permalink)
             y, m, d = date_str.split("-")
             base = (baseurl or "").rstrip("/")
