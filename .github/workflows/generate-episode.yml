@@ -1,7 +1,5 @@
 name: Generate Episode (every other day)
 
-name: Set PYTHONPATH
-run: echo "PYTHONPATH=$PWD" >> $GITHUB_ENV
 
 
 on:
@@ -17,6 +15,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+
+     - name: Set PYTHONPATH
+       run: echo "PYTHONPATH=$PWD" >> $GITHUB_ENV
+
       - name: Decide every-other-day (UTC)
         id: decide
         run: |
