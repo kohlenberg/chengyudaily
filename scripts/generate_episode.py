@@ -9,17 +9,7 @@ from chengyu.dedupe import list_existing_chengyu
 from chengyu.gen import gen_unique_episode_strict, script_to_markdown
 from chengyu.tts import tts_mp3
 
-def already_published_today() -> bool:
-    today = datetime.date.today().strftime("%Y-%m-%d")
-    posts = Path("_posts")
-    posts.mkdir(exist_ok=True)
-    return any(p.name.startswith(today + "-") for p in posts.glob(f"{today}-*.md"))
-
 def main():
-    # safety: skip if today’s post exists (idempotent)
-    if already_published_today():
-        print("Post for today already exists — skipping.")
-        return 0
 
     # 0) Unique generation
     forbidden = list_existing_chengyu(settings.REPO, settings.GITHUB_BRANCH)
