@@ -11,3 +11,6 @@ _site/
 # OS / IDE
 .DS_Store
 .vscode/
+
+# don’t version the feed; Pages build produces the live one
+podcast.xml
