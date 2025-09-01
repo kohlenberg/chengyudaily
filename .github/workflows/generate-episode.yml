@@ -1,33 +1,26 @@
 name: Generate Episode (every other day)
 
-
-
 on:
   schedule:
     - cron: "0 9 * * *"   # run daily at 09:00 UTC
   workflow_dispatch:
 
 permissions:
-  contents: write   # to commit/push the new post & episode files
+  contents: write   # to commit/push generated files
 
 jobs:
   generate:
     runs-on: ubuntu-latest
-
     steps:
-
-     - name: Set PYTHONPATH
-       run: echo "PYTHONPATH=$PWD" >> $GITHUB_ENV
-
       - name: Decide every-other-day (UTC)
         id: decide
         run: |
           doy=$(date -u +%j)  # 001..366
           if [ $((doy % 2)) -eq 0 ]; then
-            echo "run=true" >> $GITHUB_OUTPUT
+            echo "run=true" >> "$GITHUB_OUTPUT"
             echo "Proceeding (even day-of-year: $doy)."
           else
-            echo "run=false" >> $GITHUB_OUTPUT
+            echo "run=false" >> "$GITHUB_OUTPUT"
             echo "Skipping today (odd day-of-year: $doy)."
           fi
 
@@ -35,7 +28,7 @@ jobs:
         if: steps.decide.outputs.run == 'true'
         uses: actions/checkout@v4
         with:
-          persist-credentials: true   # uses GITHUB_TOKEN
+          persist-credentials: true
 
       - name: Set up Python
         if: steps.decide.outputs.run == 'true'
@@ -54,12 +47,12 @@ jobs:
             pip install openai pillow requests pyyaml markdown
           fi
 
+      - name: Set PYTHONPATH to repo root
+        if: steps.decide.outputs.run == 'true'
+        run: echo "PYTHONPATH=$PWD" >> "$GITHUB_ENV"
+
       - name: Run generator
         if: steps.decide.outputs.run == 'true'
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          # Optional overrides (else read from your chengyu.config settings)
-          # TTS_MODEL: "gpt-4o-mini-tts"
-          # IMAGE_MODEL: "gpt-image-1"
-        run: |
-          python scripts/generate_episode.py
+        run: python scripts/generate_episode.py
