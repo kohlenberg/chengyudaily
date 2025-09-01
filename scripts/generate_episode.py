@@ -42,13 +42,12 @@ def main():
     data=data,
     body_md=body_md,
     cover_bytes=cover_bytes,
-    cover_ext=cover_ext,
+    cover_ext=cover_ext,                 # "jpg" or "png"
     audio_mp3=audio_mp3,
-    upload_audio_to_release=True,   # upload to Release
-    write_audio_to_repo=True,       # also store in repo
-    audio_url_preference="repo",    # post uses repo URL (change to "release" if you prefer)
+    upload_audio_to_release=True,        # << create GitHub Release
+    write_audio_to_repo=True,           # << don't store MP3 in repo (optional)
     dry_run=settings.DRY_RUN,
-    )
+)
 
     return 0
 
