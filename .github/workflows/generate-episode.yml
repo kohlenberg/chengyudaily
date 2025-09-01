@@ -2,11 +2,11 @@ name: Generate Episode (every other day)
 
 on:
   schedule:
-    - cron: "0 9 * * *"   # run daily at 09:00 UTC
+    - cron: "0 9 * * *"   # run daily at 09:00 UTC (11:00 CEST)
   workflow_dispatch:
 
 permissions:
-  contents: write   # needed for pushing generated files
+  contents: write   # needed to commit/push generated files
 
 jobs:
   generate:
@@ -28,7 +28,7 @@ jobs:
         if: steps.decide.outputs.run == 'true'
         uses: actions/checkout@v4
         with:
-          persist-credentials: true
+          persist-credentials: true   # keep GITHUB_TOKEN in origin for workspace repo
 
       - name: Set up Python
         if: steps.decide.outputs.run == 'true'
@@ -38,9 +38,10 @@ jobs:
           cache: "pip"
           cache-dependency-path: "requirements.txt"
 
-      - name: Install deps
+      - name: Install dependencies
         if: steps.decide.outputs.run == 'true'
         run: |
+          python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then
             pip install -r requirements.txt
           else
@@ -54,18 +55,25 @@ jobs:
       - name: Configure git identity
         if: steps.decide.outputs.run == 'true'
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --global user.name  "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-      - name: Authenticate git over HTTPS with GITHUB_TOKEN
+      - name: Authenticate git everywhere with GITHUB_TOKEN
         if: steps.decide.outputs.run == 'true'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          git config --global url."https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/".insteadOf "https://github.com/"
-
+          # Rewrite any GitHub URL (https or ssh-style) to include the token
+          git config --global url."https://x-access-token:${GITHUB_TOKEN}@github.com/".insteadOf "https://github.com/"
+          git config --global url."https://x-access-token:${GITHUB_TOKEN}@github.com/".insteadOf "git@github.com:"
+          # Fallback credential helper for any remaining prompts
+          git config --global credential.helper '!f() { echo username=x-access-token; echo "password=${GITHUB_TOKEN}"; }; f'
 
       - name: Run generator
         if: steps.decide.outputs.run == 'true'
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}   # <-- provide token expected by your script
+          GITHUB_TOKEN:   ${{ secrets.GITHUB_TOKEN }}
+          GIT_TRACE: "1"
+          GIT_CURL_VERBOSE: "1"
         run: python scripts/generate_episode.py
