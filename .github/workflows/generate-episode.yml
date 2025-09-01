@@ -1,5 +1,9 @@
 name: Generate Episode (every other day)
 
+name: Set PYTHONPATH
+run: echo "PYTHONPATH=$PWD" >> $GITHUB_ENV
+
+
 on:
   schedule:
     - cron: "0 9 * * *"   # run daily at 09:00 UTC
