@@ -2,27 +2,34 @@
 """
 Publish a new episode to the GitHub repo.
 
+Features
 - Writes cover + transcript + metadata + _posts/ Markdown.
-- Prefers repo-hosted MP3s (episodes/<date>-<slug>/audio.mp3).
-- Optional: upload MP3 to GitHub Release instead.
+- **Dual audio support**:
+    * write_audio_to_repo=True  -> commit episodes/<folder>/audio.mp3
+    * upload_audio_to_release=True -> upload MP3 as a GitHub Release asset
+  You can enable both. Choose which URL is used by the post via:
+    audio_url_preference="repo" | "release"
+  Both URLs are also saved in front matter:
+    audio_repo_url, audio_release_url
 - Light sanitizer + converts "Characters" tables to simple lines.
-- Safe git clone/push (no prompts, low-speed timeouts, retry push).
+- Safe git (no prompts, low-speed timeouts, retry push).
 
-Usage:
+Usage example:
     publish_episode(
         show_name=...,
         repo="kohlenberg/chengyudaily",
         branch="main",
         site_url="https://kohlenberg.github.io/chengyudaily",
         baseurl="/chengyudaily",
-        publish_time_utc="09:00:00",   # kept for compatibility with older calls
+        publish_time_utc="09:00:00",
         data={ "chengyu": "...", "pinyin": "...", "gloss": "...", "teaser": "...", "script": "..." },
-        body_md=body_md,               # already-structured episode Markdown
+        body_md=body_md,
         cover_bytes=cover_img_bytes,
-        cover_ext="jpg",               # or "png"
-        audio_mp3=audio_bytes,         # or None
-        upload_audio_to_release=False, # True => use Release asset URL
-        write_audio_to_repo=True,      # True => write episodes/<folder>/audio.mp3
+        cover_ext="jpg",                 # or "png"
+        audio_mp3=audio_bytes,           # or None
+        upload_audio_to_release=True,    # upload MP3 to Release
+        write_audio_to_repo=True,        # also commit MP3 to repo
+        audio_url_preference="repo",     # which URL to use in the post
         dry_run=False,
     )
 """
@@ -37,7 +44,7 @@ import subprocess
 import datetime
 from pathlib import Path
 from unicodedata import normalize
-from typing import Optional
+from typing import Optional, Dict, Any
 import requests
 
 # ----------------------- small utils -----------------------
@@ -47,7 +54,6 @@ def _slugify(text: str) -> str:
     txt = re.sub(r"[^\w\s-]", "", txt).strip().lower()
     txt = re.sub(r"[-\s]+", "-", txt)
     return txt or "episode"
-
 
 def _git_env():
     """Environment for git: no prompts, stall detection."""
@@ -59,14 +65,12 @@ def _git_env():
     env.setdefault("GIT_HTTP_LOW_SPEED_TIME", "30")  # seconds
     return env
 
-
 def _run_git(args, cwd, timeout: int = 180):
     """Run a git command with low-speed limits and no prompts."""
     cmd = ["git", "-c", "http.lowSpeedLimit=1", "-c", "http.lowSpeedTime=30", *args]
     shown = " ".join(("***" if "@" in str(x) else str(x) for x in cmd))
     print("+", shown)
     subprocess.run(cmd, cwd=cwd, check=True, timeout=timeout, env=_git_env())
-
 
 def _git_clone(repo_url: str, branch: str, dest: str, timeout: int = 120):
     """Clone with no interactive prompts and sensible http timeouts."""
@@ -78,17 +82,14 @@ def _git_clone(repo_url: str, branch: str, dest: str, timeout: int = 120):
         repo_url, dest
     ], cwd=None, timeout=timeout)
 
-
 def _gh_token() -> str:
     tok = os.environ.get("GITHUB_TOKEN") or os.environ.get("GH_TOKEN")
     if not tok:
         raise RuntimeError("GITHUB_TOKEN (or GH_TOKEN) not set")
     return tok
 
-
 def _gh_headers():
     return {"Authorization": f"token {_gh_token()}", "Accept": "application/vnd.github+json"}
-
 
 GITHUB_API = "https://api.github.com"
 
@@ -106,7 +107,6 @@ def _gh_create_or_get_release(repo: str, tag: str, name: str, body: str = "") ->
         r2.raise_for_status()
         return r2.json()
     raise RuntimeError(f"Create release failed: {r.status_code} {r.text}")
-
 
 def _gh_upload_asset(upload_url_tmpl: str, filename: str, blob: bytes, content_type: str) -> dict:
     url = upload_url_tmpl.split("{")[0] + f"?name={filename}"
@@ -130,7 +130,6 @@ def _sanitize_tables_min(md: str) -> str:
             ln = ln.replace("—", "-").replace("–", "-")
         out.append(ln)
     return "\n".join(out)
-
 
 def _characters_table_to_lines(md: str) -> str:
     """
@@ -201,22 +200,33 @@ def publish_episode(
     site_url: str,
     baseurl: str,
     publish_time_utc: str,     # kept for compatibility with earlier calls
-    data: dict,                # {"chengyu","pinyin","gloss","teaser","script"}
+    data: Dict[str, Any],      # {"chengyu","pinyin","gloss","teaser","script"}
     body_md: str,
     cover_bytes: bytes,
     cover_ext: str = "jpg",    # "jpg" | "png"
     audio_mp3: Optional[bytes] = None,
     upload_audio_to_release: bool = False,
-    write_audio_to_repo: bool = True,   # prefer repo audio by default
+    write_audio_to_repo: bool = True,
+    audio_url_preference: str = "repo",  # "repo" | "release"
     dry_run: bool = False,
     timeout_clone: int = 120,
 ):
     """
     Publish a new episode. Returns paths/URLs used.
-    Prefer repo-hosted audio if write_audio_to_repo=True. If you set
-    upload_audio_to_release=True and write_audio_to_repo=False we will use the
-    Release asset URL instead.
+
+    Dual audio handling:
+      - If write_audio_to_repo=True and audio supplied, writes episodes/<folder>/audio.mp3
+      - If upload_audio_to_release=True and audio supplied, uploads Release asset
+      - Front matter will include:
+          audio_url            -> chosen by `audio_url_preference` if both exist
+          audio_repo_url       -> repo URL if present
+          audio_release_url    -> release URL if present
+          audio_bytes          -> len(audio_mp3)
     """
+    audio_url_preference = (audio_url_preference or "repo").lower()
+    if audio_url_preference not in ("repo", "release"):
+        audio_url_preference = "repo"
+
     cover_ext = (cover_ext or "jpg").lower()
     assert cover_ext in ("jpg", "jpeg", "png")
 
@@ -240,24 +250,28 @@ def publish_episode(
         "cover_image": f"/episodes/{folder}/{cover_name}",
     }
 
-    # If using Release-only audio, upload now to get URL
+    # --- Release asset upload (if requested) ---
     release_asset_url = None
-    if audio_mp3 and upload_audio_to_release and not write_audio_to_repo:
+    if audio_mp3 and upload_audio_to_release:
         tag = f"v{date_str.replace('-','')}-{slug}"
-        rel = _gh_create_or_get_release(repo, tag=tag,
-                                        name=f"{data['chengyu']} ({data['pinyin']})",
-                                        body=f"Episode: {data['chengyu']}")
-        asset = _gh_upload_asset(rel["upload_url"], filename=audio_release_name,
-                                 blob=audio_mp3, content_type="audio/mpeg")
+        rel = _gh_create_or_get_release(
+            repo, tag=tag,
+            name=f"{data['chengyu']} ({data['pinyin']})",
+            body=f"Episode: {data['chengyu']}"
+        )
+        asset = _gh_upload_asset(
+            rel["upload_url"],
+            filename=audio_release_name,
+            blob=audio_mp3,
+            content_type="audio/mpeg"
+        )
         release_asset_url = asset.get("browser_download_url")
-        fm["audio_url"] = release_asset_url
-        fm["audio_bytes"] = len(audio_mp3)
 
-    # Prepare body: min sanitize + convert "Characters" to lines
+    # Prepare body: sanitize + Characters->lines
     safe_body = _sanitize_tables_min(body_md or "")
     safe_body = _characters_table_to_lines(safe_body).strip()
 
-    # clone, write, commit, push
+    # --- clone, write files ---
     tmp = tempfile.mkdtemp(prefix="chengyu_pub_")
     try:
         token = os.environ.get("GITHUB_TOKEN") or os.environ.get("GH_TOKEN")
@@ -272,7 +286,7 @@ def publish_episode(
         ep_dir = Path(tmp) / "episodes" / folder
         ep_dir.mkdir(parents=True, exist_ok=True)
 
-        # write cover, transcript, metadata
+        # cover / transcript / metadata
         (ep_dir / cover_name).write_bytes(cover_bytes)
         (ep_dir / "transcript.txt").write_text(data["script"], encoding="utf-8")
         (ep_dir / "metadata.json").write_text(json.dumps({
@@ -284,11 +298,30 @@ def publish_episode(
             "script": data["script"],
         }, ensure_ascii=False, indent=2), encoding="utf-8")
 
-        # prefer repo audio if requested
+        # --- repo audio (if requested) ---
+        repo_audio_url = None
         if audio_mp3 and write_audio_to_repo:
             (ep_dir / audio_repo_name).write_bytes(audio_mp3)
-            fm["audio_url"] = f"/episodes/{folder}/{audio_repo_name}"
+            repo_audio_url = f"/episodes/{folder}/{audio_repo_name}"
+
+        # choose which URL the post should use
+        chosen_audio_url = None
+        if audio_mp3:
+            if audio_url_preference == "release" and release_asset_url:
+                chosen_audio_url = release_asset_url
+            elif repo_audio_url:
+                chosen_audio_url = repo_audio_url
+            elif release_asset_url:
+                chosen_audio_url = release_asset_url
+
+        # build post front matter (include both URLs if we have them)
+        if chosen_audio_url:
+            fm["audio_url"] = chosen_audio_url
             fm["audio_bytes"] = len(audio_mp3)
+        if repo_audio_url:
+            fm["audio_repo_url"] = repo_audio_url
+        if release_asset_url:
+            fm["audio_release_url"] = release_asset_url
 
         # write post
         posts_dir = Path(tmp) / "_posts"
@@ -304,23 +337,29 @@ def publish_episode(
         # push (with retry)
         if not dry_run:
             try:
-                _run_git(["push", "origin", branch], cwd=tmp, timeout=240)
+                # disable aggressive pack/delta to speed big pushes (optional)
+                _run_git([
+                    "-c","core.compression=0",
+                    "-c","pack.window=0",
+                    "-c","pack.depth=0",
+                    "push","origin",branch
+                ], cwd=tmp, timeout=240)
             except subprocess.TimeoutExpired:
                 print("Push timed out; attempting pull --rebase then retry…")
                 try:
                     _run_git(["pull", "--rebase", "origin", branch], cwd=tmp, timeout=120)
                 except Exception as e:
                     print("Rebase pull failed (continuing to retry push):", e)
-                _run_git(["push", "origin", branch], cwd=tmp, timeout=240)
+                _run_git(["push","origin",branch], cwd=tmp, timeout=240)
             except subprocess.CalledProcessError as e:
                 print("Initial push failed; attempting pull --rebase then retry…", e)
                 try:
                     _run_git(["pull", "--rebase", "origin", branch], cwd=tmp, timeout=120)
                 except Exception as e2:
                     print("Rebase pull failed (continuing to retry push):", e2)
-                _run_git(["push", "origin", branch], cwd=tmp, timeout=240)
+                _run_git(["push","origin",branch], cwd=tmp, timeout=240)
 
-            # Print canonical page URL (Jekyll permalink)
+            # canonical page URL
             y, m, d = date_str.split("-")
             base = (baseurl or "").rstrip("/")
             page_url = f"{site_url.rstrip('/')}{base}/{y}/{m}/{d}/{slug}.html"
@@ -333,8 +372,9 @@ def publish_episode(
             "folder": folder,
             "post": str(post_path),
             "cover": str(ep_dir / cover_name),
-            "audio_repo_path": str(ep_dir / audio_repo_name) if (audio_mp3 and write_audio_to_repo) else None,
-            "release_asset_url": release_asset_url,
+            "audio_repo_url": repo_audio_url,
+            "audio_release_url": release_asset_url,
+            "audio_url": chosen_audio_url,
         }
 
     finally:

@@ -33,21 +33,23 @@ def main():
 
     # 4) Publish
     publish_episode(
-        show_name=settings.SHOW_NAME,
-        repo=settings.REPO,
-        branch=settings.GITHUB_BRANCH,
-        site_url=settings.SITE_URL,
-        baseurl=settings.BASEURL,
-        publish_time_utc=settings.PUBLISH_TIME_UTC,
-        data=data,
-        body_md=body_md,
-        cover_bytes=cover_bytes,
-        cover_ext=cover_ext,            # "jpg" or "png"
-        audio_mp3=audio_mp3,
-        upload_audio_to_release=True,   # << Release asset = faster pushes
-        write_audio_to_repo=True,      # << don’t commit MP3 into repo
-        dry_run=settings.DRY_RUN,
+    show_name=settings.SHOW_NAME,
+    repo=settings.REPO,
+    branch=settings.GITHUB_BRANCH,
+    site_url=settings.SITE_URL,
+    baseurl=settings.BASEURL,
+    publish_time_utc=settings.PUBLISH_TIME_UTC,
+    data=data,
+    body_md=body_md,
+    cover_bytes=cover_bytes,
+    cover_ext=cover_ext,
+    audio_mp3=audio_mp3,
+    upload_audio_to_release=True,   # upload to Release
+    write_audio_to_repo=True,       # also store in repo
+    audio_url_preference="repo",    # post uses repo URL (change to "release" if you prefer)
+    dry_run=settings.DRY_RUN,
     )
+
     return 0
 
 if __name__ == "__main__":
