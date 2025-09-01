@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write   # to commit/push generated files
+  contents: write   # needed for pushing generated files
 
 jobs:
   generate:
@@ -51,8 +51,15 @@ jobs:
         if: steps.decide.outputs.run == 'true'
         run: echo "PYTHONPATH=$PWD" >> "$GITHUB_ENV"
 
+      - name: Configure git identity
+        if: steps.decide.outputs.run == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
       - name: Run generator
         if: steps.decide.outputs.run == 'true'
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}   # <-- provide token expected by your script
         run: python scripts/generate_episode.py
