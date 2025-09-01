@@ -57,6 +57,12 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
+      - name: Authenticate git over HTTPS with GITHUB_TOKEN
+        if: steps.decide.outputs.run == 'true'
+        run: |
+          git config --global url."https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/".insteadOf "https://github.com/"
+
+
       - name: Run generator
         if: steps.decide.outputs.run == 'true'
         env:
