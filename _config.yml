@@ -10,6 +10,8 @@ owner_name: Tilman
 owner_email: tkohlenberg@gmail.com
 markdown: kramdown
 theme: null
+include:
+- podcast.xml
 exclude:
 - build/
 - .venv/
